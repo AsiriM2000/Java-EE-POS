@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Document Title
+      ============================================= -->
+    <title>POS System</title>
+
+    <!-- Stylesheets
+     ============================================= -->
+    <link href="./assests/fonts/css/all.min.css" rel="stylesheet">
+    <link href="./assests/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Meta tags
+      ============================================= -->
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+
+    <!-- Styles
+      ============================================= -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .customer-head {
+            width: 100%;
+            margin-top: 10px;
+            height: 40px;
+            background-color: #D9D9D9;
+
+        }
+
+        header {
+            width: 100%;
+            background-color: #D9D9D9;
+        }
+
+        .main-section {
+            width: 90%;
+            margin: auto;
+            background-color: #2E4053;
+        }
+
+        .collapse {
+            flex-basis: 100%;
+            flex-grow: 1;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .collapse a {
+            font-size: 20px;
+            color: #0047FF;
+        }
+
+        .collapse a:hover {
+            color: #f9004d;
+            transition: .4s;
+        }
+
+        .breadcrumb {
+            margin-left: 20px;
+            list-style: none;
+            border-radius: 4px;
+        }
+
+        .breadcrumb li {
+            margin-top: 10px;
+            font-size: 20px;
+        }
+
+        .breadcrumb a {
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .back {
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+
+        .search {
+            display: flex;
+            width: 100%;
+            margin-top: 20px;
+            justify-content: space-between;
+        }
+
+        .d-flex {
+            width: 500px;
+            margin-left: 10px;
+        }
+
+        .add {
+            width: 350px;
+        }
+
+        .add button:first-child {
+            background-color: #3498DB;
+        }
+
+        .add button:last-child {
+            background-color: #F39C12;
+        }
+
+        .add button:first-child:hover {
+            background-color: #3498DB;
+        }
+
+        .add button:last-child:hover {
+            background-color: #F39C12;
+        }
+
+        .cus-table {
+            margin-top: 25px;
+            height: 50vh;
+        }
+
+        .save-cus, .delete-cus, .update-cus {
+            width: 155px;
+        }
+
+        tbody tr {
+            color: aqua;
+        }
+
+        #CustomerMain {
+            margin-top: 30px;
+        }
+
+        td {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<!-- header
+     ============================================= -->
+<header>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img alt="Logo" class="d-inline-block align-text-top" height="30" src="./assests/img/cart.png"
+                     width="30">
+                POS System
+            </a>
+
+            <button aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
+                    class="navbar-toggler"
+                    data-bs-target="#navbarNavDropdown" data-bs-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav justify-content-center">
+                    <li class="nav-item">
+                        <a aria-current="page" class="nav-link" href="dashboard.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="customer.html">Customers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Items</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="perchesOrder.html">Orders</a>
+                    </li>
+                </ul>
+            </div>
+            <a class="navbar-brand" href="#">
+                <img alt="Logo" class="d-inline-block align-text-top" height="30" src="./assests/img/shutdown.png"
+                     width="30">
+                Log Out
+            </a>
+        </div>
+    </nav>
+</header>
+
+<!-- main
+   ============================================= -->
+<main class="container-fluid" id="CustomerMain">
+    <section class="row">
+        <div class="col-4">
+            <h1>Item Add</h1>
+            <form id="itemForm">
+                <div class="mb-3">
+                    <label class="form-label" for="txtItemCode">Item Code</label>
+                    <input class="form-control" id="txtItemCode" name="code" type="text">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="txtItemName">Description</label>
+                    <input class="form-control" id="txtItemName" multiple name="itemName" type="text">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="txtUnitPrice">Unit Price</label>
+                    <input class="form-control" id="txtUnitPrice" name="price" type="text">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="txtQty">Qty</label>
+                    <input class="form-control" id="txtQty" name="qty" type="text">
+                </div>
+
+            </form>
+
+            <div aria-label="Basic mixed styles example" class="btn-group" role="group">
+                <button class="btn btn-primary save-cus" id="saveItem" type="button">Save</button>
+                <button class="btn btn-danger delete-cus" id="deleteItem" type="button">Delete</button>
+                <button class="btn btn-warning update-cus" id="updateItem" type="button">Update</button>
+                <button class="btn btn-success getAll-cus" id="getAllItem" type="button">Get All</button>
+            </div>
+        </div>
+        <div class="col-8">
+            <table class="table table-bordered table-hover">
+                <thead class="bg-danger text-white">
+                <tr>
+                    <th>Item Code</th>
+                    <th>Description</th>
+                    <th>Unit Price</th>
+                    <th>Qty</th>
+                </tr>
+                </thead>
+                <tbody id="tblItem">
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<script src="./assests/js/bootstrap.min.js"></script>
+<script src="./assests/js/jquery-3.6.1.min.js"></script>
+
+<script>
+    let baseURL = "http://localhost:8080/webapp/";
+    loadAllItems();
+
+    $("#saveItem").click(function (){
+        var formData = $("#itemForm").serialize();
+
+        $.ajax({
+            url: baseURL+"item",
+            method: "post",
+            data: formData,
+            dataType: "json",
+            success:function (resp){
+                alert(resp.message);
+                loadAllItems();
+            },
+            error: function (error) {
+                alert(JSON.parse(error.responseText).message);
+            }
+        });
+    });
+
+    $("#deleteItem").click(function (){
+        var code = $('#txtItemCode').val();
+
+        $.ajax({
+            url: baseURL+"item?code="+code+"",
+            method: "delete",
+            dataType: "json",
+            success:function (resp){
+                alert(resp.message);
+                loadAllItems();
+            },
+            error: function (error){
+                alert(JSON.parse(error.responseText).message);
+            }
+        });
+    });
+
+    $("#updateItem").click(function (){
+
+        var code = $('#txtItemCode').val();
+        var itemName = $('#txtItemName').val();
+        var price = $('#txtUnitPrice').val();
+        var qty = $('#txtQty').val();
+
+        var item={
+            code:code,
+            itemName:itemName,
+            price:price,
+            qty:qty
+        }
+
+        $.ajax({
+            url: baseURL+"item",
+            method: "put",
+            contentType: "application/json",
+            data: JSON.stringify(item),
+            dataType: "json",
+            success: function (resp){
+                alert(resp.message);
+                loadAllItems();
+            },
+            error: function (error){
+                alert(JSON.parse(error.responseText).message);
+            }
+        });
+
+    });
+
+    $("#getAllItem").click(function (){
+        loadAllItems();
+    });
+
+    function loadAllItems(){
+        $("#tblItem").empty();
+        $.ajax({
+            url: baseURL+"item",
+            dataType: "json",
+            success:function (resp){
+                for (var item of resp){
+                    var row = '<tr><td>'+item.code+'</td><td>'+item.itemName+'</td><td>'+item.price+'</td><td>'+item.qty+'</td><tr>';
+                    $("#tblItem").append(row);
+                }
+                bindRowEvent();
+                setTextValues("","","","");
+            }
+        });
+    }
+
+    function bindRowEvent(){
+        $("#tblItem>tr").click(function (){
+            let code = $(this).children(":eq(0)").text();
+            let itemName = $(this).children(":eq(1)").text();
+            let price = $(this).children(":eq(2)").text();
+            let qty = $(this).children(":eq(3)").text();
+
+            $('#txtItemCode').val(code);
+            $('#txtItemName').val(itemName);
+            $('#txtUnitPrice').val(price);
+            $('#txtQty').val(qty);
+        });
+    }
+
+    function setTextValues(code, itemName, price, qty){
+        $('#txtItemCode').val(code);
+        $('#txtItemName').val(itemName);
+        $('#txtUnitPrice').val(price);
+        $('#txtQty').val(qty);
+    }
+
+</script>
+</body>
+</html>
